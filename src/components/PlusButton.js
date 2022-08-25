@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     plusButton: {
         width: 64,
         height: 64,
-        backgroundColor: 'blue',
+        backgroundColor: '#2687ff',
         borderRadius: 50,
         justifyContent: 'center',
         alignItems: 'center',

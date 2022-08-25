@@ -3,19 +3,15 @@ import { View, Text, StyleSheet } from 'react-native';
 import { PatientsList } from '../components/PatientsList';
 import { PlusButton } from '../components/PlusButton';
 
-class HomeScreen extends React.Component {
-  
-  
-  render () {
-    const { navigation } = this.props
-    return (
-      <View style={styles.container}>
-        <Text style={styles.dateText}>11 сентября</Text>
-        <PatientsList navigate={navigation.navigate}/>
-        <PlusButton />
-      </View>
-    )
-  }
+const HomeScreen = ({navigation}) => {
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.dateText}>11 сентября</Text>
+      <PatientsList navigate={navigation.navigate}/>
+      <PlusButton />
+    </View>
+  )
 };
 
 export default HomeScreen;

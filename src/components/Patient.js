@@ -3,17 +3,18 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 
 export const Patient = ({patient, navigate}) => {
     
-    const [active, setActive] = useState(false);
     
     return (
-        <TouchableOpacity style={styles.itemsGroup} onPress={navigate.bind(this, 'Patient')}>
-            <Image style={styles.patientAvatar}  source={{uri: patient.image}}/>
-            <View style={styles.patientInfo}>
-                <Text style={styles.patientName}>{patient.name}</Text>
-                <Text style={styles.patientProblem}>{patient.problem}</Text>
-            </View>
-            <Text style={[styles.patientTime, patient.active ? styles.patientTimeActive : styles.patientTimeNotActive]}>{patient.time}</Text>
-        </TouchableOpacity>
+        <View>
+            <TouchableOpacity style={styles.itemsGroup} onPress={navigate.bind(this, 'Patient', patient)}>
+                <Image style={styles.patientAvatar}  source={{uri: patient.image}}/>
+                <View style={styles.patientInfo}>
+                    <Text style={styles.patientName}>{patient.name}</Text>
+                    <Text style={styles.patientProblem}>{patient.problem}</Text>
+                </View>
+                <Text style={patient.active ? styles.patientTimeActive : styles.patientTimeNotActive}>{patient.time}</Text>
+            </TouchableOpacity>
+        </View>
     )
 };
 
@@ -44,21 +45,28 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#8b979f'
     },
-    patientTime: {
+    patientTimeActive: {
+        textAlign: 'center',
+        lineHeight: 32,
         fontWeight:'600',
         fontSize: 14,
-        borderRadius: 18,
         width: 70,
         height: 32,
-        textAlign: 'center',
-        lineHeight: 30,
-    },
-    patientTimeActive: {
         color: 'white',
-        backgroundColor: 'blue'
+        borderRadius: 18,
+        backgroundColor: '#2687ff',
+        overflow: 'hidden'
     },
     patientTimeNotActive: {
-        color: 'blue',
-        backgroundColor: '#E9F5FF'
+        textAlign: 'center',
+        lineHeight: 32,
+        fontWeight:'600',
+        fontSize: 14,
+        width: 70,
+        height: 32,
+        color: '#2687ff',
+        borderRadius: 18,
+        backgroundColor: '#E9F5FF',
+        overflow: 'hidden'
     }
 })
