@@ -35,6 +35,14 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         marginHorizontal: 20,
         borderRadius: 18,
+        shadowColor: "gray",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.51,
+        shadowRadius: 13.16,
+        elevation: 20,
     },
     teeth: {
         flexDirection: 'row',
@@ -55,7 +63,7 @@ const styles = StyleSheet.create({
         paddingTop: 10
     },
     appointmentTime: {
-        width: 200,
+        width: 180,
         height: 32,
         backgroundColor: '#2687ff',
         borderRadius: 18,

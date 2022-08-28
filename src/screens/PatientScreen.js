@@ -1,28 +1,35 @@
-import { StyleSheet, Text, View } from "react-native"
+import { Image, StyleSheet, Text, View } from "react-native"
 import React, { Component } from 'react';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Ionicons } from '@expo/vector-icons';
 import { Appointment } from "../components/Appointment";
 
-const PatientScreen = () => {
-    
+const PatientScreen = ({route}) => {
+  
+  const { image, name, phone, problem, date, time } = route.params;
+
   return (
-      <View>
-        <View style={styles.patientInfo}>
-          <Text style={styles.patientName}>Марина Алмазова</Text>
-          <Text style={styles.patientPhone}>+7 (999) 200-66-55</Text>
-          <View style={styles.patientInfoBottom}>
-            <TouchableOpacity style={styles.teethFormula}>
-              <Text style={styles.teethFormulaText}>Формула зубов</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.callIcon}>
-              <Ionicons name="call" size={22} color="white" />
-            </TouchableOpacity>
+    <View>
+      <View style={styles.patientInfo}>
+        <View style={styles.patientInfoTop}>
+          <Image style={styles.patientAvatar}  source={{uri: image}}/>
+          <View>
+            <Text style={styles.patientName}>{name}</Text>
+            <Text style={styles.patientPhone}>{phone}</Text>
           </View>
         </View>
-        <Text style={styles.appointmentText}>Приемы</Text>
-        <Appointment/>
+        <View style={styles.patientInfoBottom}>
+          <TouchableOpacity style={styles.teethFormula}>
+            <Text style={styles.teethFormulaText}>Формула зубов</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.callIcon}>
+            <Ionicons name="call" size={22} color="white" />
+          </TouchableOpacity>
+        </View>
       </View>
+      <Text style={styles.appointmentText}>Приемы</Text>
+      <Appointment/>
+    </View>
   );
 };
 
@@ -31,19 +38,37 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: 20,
     backgroundColor: 'white',
-    paddingVertical: 20
+    paddingVertical: 20,
+    shadowColor: "gray",
+    shadowOffset: {
+        width: 0,
+        height: 2,
+    },
+    shadowOpacity: 0.51,
+    shadowRadius: 13.16,
+    elevation: 20,
+  },
+  patientAvatar: {
+    borderRadius: 50,
+    width: 60,
+    height: 60,
+    marginRight: 16,
   },
   patientName: {
-    fontSize: 32,
-    fontWeight: '800'
+    fontSize: 30,
+    fontWeight: '800',
   },
   patientPhone: {
     color: 'gray',
     fontSize: 16,
     marginTop: 10
   },
+  patientInfoTop: {
+    flexDirection: 'row',
+    alignItems: 'center',    
+  },
   teethFormula: {
-    width: 290,
+    width: 250,
     backgroundColor: '#2687ff',
     borderRadius: 25,
     height: 50,
